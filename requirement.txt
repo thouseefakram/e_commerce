@@ -1,0 +1,15 @@
+Django==4.2.4               # Ensure you specify the version of Django you are using
+djangorestframework==3.14.0  # If you're using Django REST Framework for APIs
+django-allauth==0.54.0       # For user authentication (social login, email confirmation, etc.)
+django-cors-headers==3.14.0  # If you need to handle CORS for APIs
+django-crispy-forms==1.14.0  # For better form handling and rendering
+Pillow==10.0.0               # For handling image uploads
+stripe==5.10.0               # For handling Stripe payments
+boto3==1.28.0                # If you're using AWS S3 for file storage
+django-storages==1.14.0      # If you're integrating S3 or other storage backends
+celery==5.3.1                # For handling asynchronous tasks, if needed (e.g., email notifications)
+redis==5.0.9                 # Redis as the Celery broker
+gunicorn==21.2.0             # For deploying with a WSGI server (e.g., Gunicorn)
+psycopg2==2.9.9              # PostgreSQL database adapter (if using PostgreSQL)
+mysqlclient==2.2.0           # MySQL database adapter (if using MySQL)
+django-filter==23.2          # For filtering querysets in Django
