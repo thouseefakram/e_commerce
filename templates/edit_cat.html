@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category</title>
+</head>
+<style>
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+</style>
+<body>
+    <div style="width: 100%;">
+    {% include './component/navbar.html' %}</div>
+
+    <form action="show_cat">
+        
+        <input type="submit" name="submit" value="Show data" style="position:absolute; right: 20px; top: 100px;">
+    </form>
+    
+    <h1 style="width: 100%;margin-top:30px">Edit Category Names :</h1>
+
+
+
+
+    
+    <form style="margin-top: 50px;" action="/record_edit" method="post">
+        {% csrf_token %}
+        <label>Name : </label>
+        <input type="text" name="name" value="{{name}}" required>
+        <input type="hidden" name="id" value="{{ id }}"> 
+       
+        <input type="submit" name="submit" >
+        
+    </form>
+</body>
+</html>

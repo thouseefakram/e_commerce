@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <script src='{% static "js/index.js" %}'></script>
+</head>
+<style>
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+</style>
+<body>
+    <div style="width: 100%;">
+    {% include './component/navbar.html' %}</div>
+    <form action="show_product">
+        
+        <input type="submit" name="submit" value="Show data" style="position:absolute; right: 20px; top: 100px;">
+    </form>
+    
+    <h1 style="width: 100%;margin-top:30px">Edit Product Names :</h1>
+
+
+
+
+    
+    <form style="margin-top: 50px;" action="/record_product" method="post" enctype="multipart/form-data">
+    
+        {% csrf_token %}
+        <label>Name : </label>
+        <input type="text" name="name" value="{{name}}" required>
+        <select name="cat_id" id="category" onchange="ajax_request($this.value)"  required style="position: absolute; top:236px; left:481px">
+            <option value="on_category">Select category</option>
+            {% for item in category %}
+
+
+           
+                <option value="{{ item.id }}">{{ item.name }}</option>
+                
+            {% endfor %}
+        </select>
+        <select name="subcat_id" id="sub_category" required style="position: absolute; top:265px; left:481px">
+            <option value="">Select subcategory</option>
+            
+        </select>
+        <input type="file" name="image"  style="position: absolute; top:293px;left:481px">
+        <input type="hidden" name="id" value="{{ id }}"> 
+        <input type="submit" name="submit" >
+        
+    </form>
+</body>
+</html>

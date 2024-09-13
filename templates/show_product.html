@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show product</title>
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        flex-direction:column;
+        align-items: center;
+    }
+    table{
+        width: 500px;
+        border: 2px solid black;
+        border-collapse: collapse;
+
+    }
+    th{
+        border: 2px solid black;
+    }
+
+    td{
+        border: 1px solid black; 
+        text-align: center; 
+    }
+</style>
+<body>
+    <div style="width: 100%;">
+    {% include './component/navbar.html' %}</div>
+    <form action="/">
+        <input type="submit" name="submit" value="home" style="margin-top: 20px;position:absolute;left:20px">
+    </form>
+    <form action="product" >
+        <input type="submit" name="submit" value="Add" style="position: absolute; top:137px;right:365px">
+    </form>
+    <h2 style="margin-top: 50px;">Product Datas :</h2>
+
+    <table>
+        <thead>
+            <th style="border: 2px solid black; text-align:center">ID</th>
+            <th style="border: 2px solid black; text-align:center">Cate_ID</th>
+            <th style="border: 2px solid black; text-align:center">Subcate_ID</th>
+            <th style="border: 2px solid black; text-align:center">Name</th>
+            <th style="border: 2px solid black; text-align:center">Image</th>
+            <th style="border: 2px solid black; text-align:center">Date</th>
+            <th style="border: 2px solid black; text-align:center">Action</th>
+        </thead>
+        {% for p in pro %}
+        <tr>    
+            <td style="border: 1px solid black;">{{forloop.counter}}</td>
+            <td style="border: 1px solid black;">{{p.cat_id}}</td>
+            <td style="border: 1px solid black;">{{p.subcat_id}}</td>
+            <td style="border: 1px solid black;">{{p.name}}</td>
+            <td style="border: 1px solid black;">
+                <img src="{{ MEDIA_URL }}{{ p.image.url}}" alt="Image missing" width="50px" height="50px" style="border:1px solid black;"/>
+               
+            </td>
+            <td style="border: 1px solid black;">{{p.date}}</td>
+            <td style="border: 1px solid black;">
+                <a href="/edit_product?id={{p.id}}">Edit</a>
+                <a href="/del_product?id={{p.id}}">Delete</a>
+            </td>
+
+
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
